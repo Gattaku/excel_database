@@ -16,7 +16,7 @@ const createNewDB = async (userName, text) => {
         await axios.post("/addString", {
             userName: userName,
             text: text,
-            id: Math.random().toString(),
+            // id: Math.random().toString(),
         });
         window.alert("DBへの登録が完了しました!");
         $userName.value = "";

@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const XLSX = require('xlsx');
 const fs = require('fs');
 const getCurrentTime = require("./components/getDate"); //現在時刻を取ってくる関数をimport
+const crypto = require("crypto");
+
 
 const app = express();
 app.use(express.static("./public"));
@@ -21,12 +23,13 @@ const apiEndpoint = '/addString';
 
 // エクセルファイルに文字列を追記するAPI
 app.post(apiEndpoint, (req, res) => {
-    const { userName, text, id } = req.body;
+    const { userName, text } = req.body;
     const currentTime = getCurrentTime.getCurrentTime();
 
     // 追加をつかさどる部分 
     const colIndex = "ABCD"; //どの列までするか
-    const colContent = [currentTime, userName, text, id] //中身の配列
+    const id = crypto.randomUUID;
+    const colContent = [currentTime, userName, id, text] //中身の配列
 
 
 
