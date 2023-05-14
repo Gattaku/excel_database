@@ -6,18 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>エクセルDBトライ</title>
-    <!-- <script src="./index.js" defer></script> -->
+    <script src="./index.js" defer></script>
 </head>
 
 <body>
     <!-- <form method="post" action="http://localhost:3000/addString"> -->
-    <form method="post" action="/addString">
+    <!-- <form method="post" action="/addString">
         <label for="string">文字列:</label>
         <input type="text" id="string" placeholder="ユーザー名" name="userName" required>
         <input type="text" id="string" placeholder="テキスト入力" name="string" required>
         <button type="submit">送信</button>
+    </form> -->
+    <form id="myform">
+        <label for="string">文字列:</label>
+        <input type="text" id="user" placeholder="ユーザー名" name="userName" required>
+        <input type="text" id="textContent" placeholder="テキスト入力" name="text" required>
+        <button type="submit">送信</button>
     </form>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 
 </html>

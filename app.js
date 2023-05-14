@@ -21,9 +21,15 @@ const apiEndpoint = '/addString';
 
 // エクセルファイルに文字列を追記するAPI
 app.post(apiEndpoint, (req, res) => {
-    const { userName, string } = req.body;
-
+    const { userName, text, id } = req.body;
     const currentTime = getCurrentTime.getCurrentTime();
+
+    // 追加をつかさどる部分 
+    const colIndex = "ABCD"; //どの列までするか
+    const colContent = [currentTime, userName, text, id] //中身の配列
+
+
+
     // エクセルファイルの読み込み
     let workbook;
     if (fs.existsSync(excelFilePath)) {
@@ -51,13 +57,12 @@ app.post(apiEndpoint, (req, res) => {
             cell = worksheet[checkRow];
         }
     }
-    // 変更可能範囲指定
-    const rangeCol = `C${rowIndex}`;
-    const range = worksheet['!ref'] = `A1:${rangeCol}`;
 
-    // セルに文字列を追加
-    const colIndex = "ABC";
-    const colContent = [currentTime, userName, string]
+
+
+    // 変更可能範囲指定
+    const rangeCol = `${colIndex[colIndex.length - 1]}${rowIndex}`;
+    const range = worksheet['!ref'] = `A1:${rangeCol}`;
 
     for (let i = 0; i < colIndex.length; i++) {
         worksheet[`${colIndex[i]}${rowIndex}`] = { t: 's', v: colContent[i] };
