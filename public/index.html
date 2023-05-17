@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>エクセルDBトライ</title>
-    <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+    <!-- <script src="./index.js" defer></script> -->
 </head>
 
 <body>
@@ -22,9 +23,15 @@
         <input type="text" id="user" placeholder="ユーザー名" name="userName" required>
         <input type="text" id="textContent" placeholder="テキスト入力" name="text" required>
         <button type="submit">送信</button>
+        <br>
+        <br>
+        <button id="getbutton">DB情報ゲット</button>
+        <div id="currentDB"></div>
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./index.js"></script>
+
 </body>
 
 </html>
